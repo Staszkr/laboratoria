@@ -4,18 +4,14 @@
 #include <stdio.h>
 #include <math.h>
 #include <unistd.h>  
-enum{KONSOLA, PLIK} stan_pracy;
 
-	int pobrane;
-    int czas_dyskretny;
-    double wsp_x; 
-	double y;
-	
+	enum{KONSOLA=1, PLIK=2} stan_pracy;
 int main(void)
 {
-printf("podaj numer: %d\n", stan_pracy);
-
-
+	stan_pracy=KONSOLA;
+    int czas_dyskretny;
+    double wspl_x, wspl_y; 
+	
 
 switch (stan_pracy){
 
@@ -25,9 +21,10 @@ case KONSOLA:
     printf("podaj chwile czasowa n: ");
     scanf("%d", &czas_dyskretny);
 
-    wsp_x=(float)cos((double)czas_dyskretny/4.0);
+    wspl_x=(float)cos((double)czas_dyskretny/4.0);
 
-    printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", czas_dyskretny, wsp_x,y);
+    printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", czas_dyskretny, wspl_x,wspl_y);
+
 	break;
 	case PLIK:
 
