@@ -7,14 +7,6 @@
 #include <string.h>
 #include <stdlib.h>
 
- void replace_comma_with_dot(char *str) {
-    while (*str) {
-        if (*str == ',') {
-            *str = '.';
-        }
-        str++;
-    }
-}
  //deklaracja enum
 enum{KONSOLA=1, PLIK=2, WYJSCIE=3 } stan_pracy;
 
@@ -88,12 +80,11 @@ switch (stan_pracy){
 
             printf("\n=================================\n");
 
-            sleep(3);
         }
             printf("\n=================================\n");
             printf("udalo sie otworzyc plik \n");
             printf("\n=================================\n");
-        for(czas_dyskretny=1; czas_dyskretny<39;czas_dyskretny++){
+        for(czas_dyskretny==1; czas_dyskretny<39;czas_dyskretny++){
         wspl_x=(float)cos((double)czas_dyskretny/4.0);
 
         fprintf(plikwyniki,"x:%.2f y: %.2f\n\n =======\n",wspl_x,wspl_y);
@@ -116,7 +107,6 @@ switch (stan_pracy){
 	break;
 
   }
-  sleep(3);
      return 0; 
     }
 
