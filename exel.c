@@ -9,18 +9,26 @@
 
  //deklaracja enum
 enum{KONSOLA=1, PLIK=2, WYJSCIE=3 } stan_pracy;
+typedef struct wiersz_danych
+{
+    int czas_dyskretny;
+    double wspl_x, wspl_y;
+}wiersz_danych_t;
 
 
 int main(void){
     printf("\n=================================\n");
     //definicja zmiennych int
-        int czas_dyskretny;
-        
-    //definicja zmiennych double
-        double wspl_x;
-        double wspl_y=0; 
+        int stan_pracy;
+
+        wiersz_danych_t wiersz;
+
+    // //definicja zmiennych double
+    //     double wspl_x=0;
+    //     double wspl_y=0; 
 
     //wypisanie opcji do wyboru
+
    do{
             printf("wybierz opcje: \n");
             printf("1. KONSOLA \n");
@@ -43,34 +51,35 @@ switch (stan_pracy){
     //działanie w cmd
         printf ("wybrano pierwsza opcje \n");
         printf("podaj chwile czasowa n: ");
-        scanf("%d", &czas_dyskretny);
- for(czas_dyskretny==1;czas_dyskretny<39;czas_dyskretny++){
-        wspl_x=(float)cos((double)czas_dyskretny/4.0);
-        wspl_y=(float)sin((double)czas_dyskretny/4.0);
+        scanf("%d", &wiersz.czas_dyskretny);
+        
+ for(wiersz.czas_dyskretny==1;wiersz.czas_dyskretny<39;wiersz.czas_dyskretny++){
+        wiersz.wspl_x=(float)cos((double)wiersz.czas_dyskretny/4.0);
+        wiersz.wspl_y=(float)sin((double)wiersz.czas_dyskretny/4.0);
         printf("\n=================================\n");
     
-        printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", czas_dyskretny, wspl_x,wspl_y);
+        printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", wiersz.czas_dyskretny, wiersz.wspl_x,wiersz.wspl_y);
 
 }
-        wspl_x=(float)cos((double)czas_dyskretny/4.0);
-        wspl_y=(float)sin((double)czas_dyskretny/4.0);
+        wiersz.wspl_x=(float)cos((double)wiersz.czas_dyskretny/4.0);
+        wiersz.wspl_y=(float)sin((double)wiersz.czas_dyskretny/4.0);
         printf("\n=================================\n");
     
-        printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", czas_dyskretny, wspl_x,wspl_y);
-    
-
+        printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", wiersz.czas_dyskretny, wiersz.wspl_x , wiersz.wspl_y );
+        sleep(2);
 	break;
 
 //opcja PLIK
 	case PLIK:
 
         printf("podaj chwile czasowa n: ");
-        scanf("%d", &czas_dyskretny);
+        scanf("%d", &wiersz.czas_dyskretny);
 
-        wspl_x=(float)cos((double)czas_dyskretny/4.0);
+        wiersz.wspl_x=(float)cos((double)wiersz.czas_dyskretny/4.0);
+        wiersz.wspl_y=(float)sin((double)wiersz.czas_dyskretny/4.0);
         printf("\n=================================\n");
     
-        printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", czas_dyskretny, wspl_x,wspl_y);
+        printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", wiersz.czas_dyskretny, wiersz.wspl_x,wiersz.wspl_y);
 
         FILE *plikwyniki = fopen("wyniki.csv", "w"); // Otwórz plik w trybie dopisywania
         if(plikwyniki==NULL){
@@ -84,12 +93,14 @@ switch (stan_pracy){
             printf("\n=================================\n");
             printf("udalo sie otworzyc plik \n");
             printf("\n=================================\n");
-        for(czas_dyskretny==1; czas_dyskretny<39;czas_dyskretny++){
-        wspl_x=(float)cos((double)czas_dyskretny/4.0);
+        for(wiersz.czas_dyskretny == 1; wiersz.czas_dyskretny<39;wiersz.czas_dyskretny++){
+        wiersz.wspl_x=(float)cos((double)wiersz.czas_dyskretny/4.0);
+        wiersz.wspl_y=(float)sin((double)wiersz.czas_dyskretny/4.0);
 
-        fprintf(plikwyniki,"x:%.2f y: %.2f\n\n =======\n",wspl_x,wspl_y);
+        fprintf(plikwyniki,"x:%.2f y: %.2f\n\n =======\n",wiersz.wspl_x,wiersz.wspl_y);
         
         }fclose(plikwyniki);
+        sleep(2);
 	break;
 
 //opcja WYJSCIE
@@ -107,8 +118,6 @@ switch (stan_pracy){
 	break;
 
   }
+    sleep(2);
      return 0; 
     }
-
-
-
