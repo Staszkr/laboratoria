@@ -19,6 +19,6 @@ int menu1(int* stan) {
             printf("Niepoprawna wartosc! Wpisz 1,2,3, aby kontynuowac.\n\n");
         }
     } while (opcja < 1 || opcja > 3);
-    stan = opcja;
-    return stan;
+    *stan = opcja;
+    return 1;
 }
