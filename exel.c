@@ -3,9 +3,11 @@
 //wyjscie z programu
 #include <stdio.h>
 #include <math.h>
-#include <unistd.h>  
+//#include <unistd.h>  
 #include <string.h>
 #include <stdlib.h>
+#include "menu.h"
+
 
  //deklaracja enum
 enum{KONSOLA=1, PLIK=2, WYJSCIE=3 } stan_pracy;
@@ -20,6 +22,7 @@ int main(void){
     printf("\n=================================\n");
     //definicja zmiennych int
         int stan_pracy;
+        stan_pracy = menu1(&stan_pracy);
 
         wiersz_danych_t wiersz;
 
@@ -29,18 +32,7 @@ int main(void){
 
     //wypisanie opcji do wyboru
 
-   do{
-            printf("wybierz opcje: \n");
-            printf("1. KONSOLA \n");
-            printf("2. PLIK \n");
-            printf("3. Wyjscie \n");
-            printf("\n=================================\n");
-            scanf("%d", (int* )&stan_pracy);
-            printf("\n=================================\n");
-            if (stan_pracy<1||stan_pracy>3) {
-            printf("Niepoprawna wartosc! Wpisz 1,2,3, aby kontynuowac.\n\n");
-   }
-}while (stan_pracy < 1 || stan_pracy > 3);
+
     
 //zaczynanie pracy w zależności od wyboru
 switch (stan_pracy){
@@ -66,7 +58,6 @@ switch (stan_pracy){
         printf("\n=================================\n");
     
         printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", wiersz.czas_dyskretny, wiersz.wspl_x , wiersz.wspl_y );
-        sleep(2);
 	break;
 
 //opcja PLIK
@@ -79,8 +70,6 @@ switch (stan_pracy){
         wiersz.wspl_y=(float)sin((double)wiersz.czas_dyskretny/4.0);
         printf("\n=================================\n");
     
-        printf("wyniki obliczen n dla czasu dyskretnego %d: x: %.2f, y: %.2f  \n", wiersz.czas_dyskretny, wiersz.wspl_x,wiersz.wspl_y);
-
         FILE *plikwyniki = fopen("wyniki.csv", "w"); // Otwórz plik w trybie dopisywania
         if(plikwyniki==NULL){
             printf("\n=================================\n");
@@ -100,7 +89,6 @@ switch (stan_pracy){
         fprintf(plikwyniki,"x:%.2f y: %.2f\n\n =======\n",wiersz.wspl_x,wiersz.wspl_y);
         
         }fclose(plikwyniki);
-        sleep(2);
 	break;
 
 //opcja WYJSCIE
@@ -118,6 +106,5 @@ switch (stan_pracy){
 	break;
 
   }
-    sleep(2);
      return 0; 
     }
