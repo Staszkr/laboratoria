@@ -3,14 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 
-int obliczanie1(int* czas, double* x, double* y) {
-    if (czas == NULL || x == NULL || y == NULL) {
-        return 0; // B??d: wska?nik jest NULL
-    }
+int obliczanie1(double* wynik1, double arg1) {
 
-    // Dereferencja wska?nika czas i obliczenia
-    *x = cos((double)(*czas) / 4.0);
-    *y = sin((double)(*czas) / 4.0);
-
+    int e = 2;
+    *wynik1 = pow( (double)arg1,(double) e);
+    *wynik1 = 20;
     return 1;
 }
