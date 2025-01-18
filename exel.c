@@ -11,7 +11,7 @@ typedef struct wiersz_danych
     double argument;
     double wynik;
 }wiersz_danych_t;
-
+jdjdjdjdj
 
 int main(void){
     //definicja zmiennych int
